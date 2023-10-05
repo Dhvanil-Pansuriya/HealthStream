@@ -47,11 +47,11 @@ if (!isset($_SESSION['username'])) {
 
 
             <main class="container my-4 ">
-                <h1 class="text-center">Add Patient</h1>
+                <h1 class="text-center">Add Doctor</h1>
                 <div class="container" style="max-width: 50rem;">
                     <form method="post" action="<?php echo $_SERVER['PHP_SELF']; ?>">
                         <div class="mb-3">
-                            <label for="exampleInputEmail1" class="form-label">Username</label>
+                            <label for="exampleInputEmail1" class="form-label">Doctor Name</label>
                             <input type="text" class="form-control" id="exampleInputEmail1" name="username"
                                 aria-describedby="emailHelp" required>
                         </div>
@@ -70,48 +70,34 @@ if (!isset($_SESSION['username'])) {
                                 required>
                         </div>
                         <div class="mb-3">
-                            <div class="dropdown my-4">
-
-                                <label for="exampleInputPassword1" class="form-label">Allocate Doctor</label>
-                                <select class="form-select" aria-label="Default select example" name="allocateddoctor">
-
-                                    <?php
-
-                                    include "../config.php";
-                                    $sql = " SELECT name, specialist FROM doctors ";
-                                    $result = mysqli_query($conn, $sql);
-
-                                    if (mysqli_num_rows($result) > 0) {
-                                        while ($row = mysqli_fetch_assoc($result)) {
-
-                                            echo " <option value='" . $row['name'] . " '>" . $row['name'] . " ( " . $row['specialist'] . " ) </option>
-                                        ";
-
-                                        }
-                                    } else {
-                                        echo "No Doctor Available";
-                                    }
-
-                                    ?>
-                                </select>
-
-                            </div>
-                        </div>
-                        <div class="mb-3">
-                            <label for="exampleInputPassword1" class="form-label">Patient's Disease</label>
-                            <input type="text" class="form-control" id="exampleInputPassword1" name="disease"
+                            <label for="exampleInputPassword1" class="form-label">Specialist</label>
+                            <input type="text" class="form-control" id="exampleInputPassword1" name="specialist"
                                 required>
                         </div>
                         <div class="mb-3">
-                            <label for="exampleFormControlTextarea1" class="form-label">Address</label>
-                            <textarea class="form-control" id="exampleFormControlTextarea1" rows="3" name="address"
+                            <label for="exampleInputPassword1" class="form-label">Experience</label>
+                            <input type="text" class="form-control" id="exampleInputPassword1" name="experience"
+                                required>
+                        </div>
+                        <div class="mb-3">
+                            <label for="exampleInputPassword1" class="form-label">Doctor ID</label>
+                            <input type="text" class="form-control" id="exampleInputPassword1" name="doctorid" required>
+                        </div>
+                        <div class="mb-3">
+                            <label for="exampleFormControlTextarea1" class="form-label">Description</label>
+                            <textarea class="form-control" id="exampleFormControlTextarea1" rows="3" name="description"
                                 required></textarea>
 
                         </div>
                         <button type="submit" name="signup_button" class="btn btn-outline-dark my-3 px-5">Add
-                            Patient</button>
+                            Doctor</button>
                     </form>
                 </div>
+                <h1 class="text-center my-5">Remove Doctor</h1>
+        <div class="container text-center" style="max-width: 50rem;">
+
+          <a href="./kickoutDoctor.php" class="btn btn-dark ">Remove Doctor</a>
+        </div>
             </main>
 
 
@@ -122,38 +108,39 @@ if (!isset($_SESSION['username'])) {
                 include '../config.php';
 
                 $username = mysqli_real_escape_string($conn, $_POST['username']);
-                $phonenumber = mysqli_real_escape_string($conn, $_POST['phonenumber']);
                 $email = mysqli_real_escape_string($conn, $_POST['email']);
+                $phonenumber = mysqli_real_escape_string($conn, $_POST['phonenumber']);
                 $password = mysqli_real_escape_string($conn, ($_POST['password']));
-                $address = mysqli_real_escape_string($conn, ($_POST['address']));
-                $allocateddoctor = mysqli_real_escape_string($conn, ($_POST['allocateddoctor']));
-                $disease = mysqli_real_escape_string($conn, ($_POST['disease']));
+                $specialist = mysqli_real_escape_string($conn, ($_POST['specialist']));
+                $experience = mysqli_real_escape_string($conn, ($_POST['experience']));
+                $doctorid = mysqli_real_escape_string($conn, ($_POST['doctorid']));
+                $description = mysqli_real_escape_string($conn, ($_POST['description']));
 
                 date_default_timezone_set('Asia/Kolkata');
                 $registered_on = date('d/m/Y H:i:s', time());
 
-                $sql = "SELECT username FROM users WHERE username = '{$username}'";
+                $sql = "SELECT name FROM doctors WHERE name = '{$username}'";
                 $result = mysqli_query($conn, $sql);
 
                 if (mysqli_num_rows($result) > 0) {
                     echo '<div class=" container alert alert-danger alert-dismissible fade show" role="alert">
-                            <strong>Patient </strong> Name Already taken by other !!
+                            <strong>Doctor </strong> Name Already taken by other !!
                             <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
                           </div>';
                 } else {
-                    $sql1 = "SELECT email FROM users WHERE email = '{$email}'";
+                    $sql1 = "SELECT email FROM doctors WHERE email = '{$email}'";
                     $result1 = mysqli_query($conn, $sql1);
 
                     if (mysqli_num_rows($result1) > 0) {
                         echo '<div class=" container alert alert-danger alert-dismissible fade show" role="alert">
-                            <strong>Patient </strong> Email Already taken by other !!
+                            <strong>Doctor </strong> Email Already taken by other !!
                             <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
                           </div>';
                     } else {
-                        $sql2 = "INSERT INTO `users`(`username`, `email`, `phonenumber`, `registered_date`, `password`,`address`,`allocateddoctor`,`disease` ) VALUES ('{$username}','{$email}','{$phonenumber}', NOW(),'{$password}','{$address}','{$allocateddoctor}','{$disease}')";
+                        $sql2 = "INSERT INTO `doctors`(`name`, `email`, `phonenumber`, `password`, `specialist`,`experience`,`doctorid`,`description` ) VALUES ('{$username}','{$email}','{$phonenumber}','{$password}','{$specialist}','{$experience}','{$doctorid}','{$description}')";
                         if (mysqli_query($conn, $sql2)) {
                             echo '<div class=" container alert alert-success alert-dismissible fade show" role="alert">
-                            <strong>Patient </strong> add Successfully 
+                            <strong>Doctor </strong> add Successfully 
                             <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
                           </div>';
                             // header("Location: http://localhost/healthstream");
@@ -166,9 +153,7 @@ if (!isset($_SESSION['username'])) {
         </div>
     </div>
 
-    <div class="my-5">
-        <hr>
-    </div>
+ 
 
 </body>
 

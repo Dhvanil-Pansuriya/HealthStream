@@ -12,7 +12,7 @@ if (!isset($_SESSION['username'])) {
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Doctor - HealthStream</title>
+  <title>Assistant - HealthStream</title>
   <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet"
     integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
   <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js"
@@ -33,20 +33,20 @@ if (!isset($_SESSION['username'])) {
     <?php
 
     include "../config.php";
-    $sql = " SELECT username, email, phonenumber, registered_date, address, allocateddoctor,disease FROM users WHERE `allocateddoctor`= '{$_SESSION['username']}' ";
-    $result = mysqli_query($conn, $sql);
-
-    $getUsersSQL = "SELECT * FROM users WHERE `allocateddoctor`= '{$_SESSION['username']}' ";
+    // $sql = " SELECT username, email, phonenumber, registered_date, address, allocateddoctor FROM users WHERE `allocateddoctor`= '{$_SESSION['username']}' ";
+    // $result = mysqli_query($conn, $sql);
+    
+    $getUsersSQL = "SELECT * FROM users ";
     $getUserResult = mysqli_query($conn, $getUsersSQL) or die("Query Failed.");
 
     $count = 0;
 
     if (mysqli_num_rows($getUserResult) > 0) {
       while ($row = mysqli_fetch_assoc($getUserResult)) {
-        if (mysqli_num_rows($result) > 0) {
-          while ($row = mysqli_fetch_assoc($result)) {
-            $count++;
-            echo "
+        // if (mysqli_num_rows($result) > 0) {
+        // while ($row = mysqli_fetch_assoc($result)) {
+        $count++;
+        echo "
                   <section class='container border border-1 border-dark p-4 my-3 rounded'>
                     <h1><b> Patient : " . $count . "</b></h1>
                     <div class='col-lg-12'>
@@ -111,27 +111,27 @@ if (!isset($_SESSION['username'])) {
                           Remove Patient
                       </a>                          </div>
                           <div class='col-sm-9'>
-                         </div>
+                                             </div>
                         </div>
                       </div>
                     </div>
                   </section>
                   ";
-          }
-          
-        } 
-      }
-      
-    }else {
-      echo '
-          <div class="container border border-2 p-5">
-          <div class="jumbotron jumbotron-fluid ">
-            <h1 class="display-4">No Patient in List</h1>
-            <p class="lead">There 0 Patient In List For List Patient Please Add Patient</p>
-          </div>
-        </div>';
-    }
 
+
+      }
+    } else {
+      echo '
+      <div class="container border border-2 p-5">
+      <div class="jumbotron jumbotron-fluid ">
+        <h1 class="display-4">No Patient in List</h1>
+        <p class="lead">There 0 Patient In List For List Patient Please Add Patient</p>
+      </div>
+    </div>';
+    }
+    // }
+    // }
+    
     ?>
   <!-- </div> -->
 

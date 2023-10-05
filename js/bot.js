@@ -5,7 +5,7 @@ const chatInput = document.querySelector(".chat-input textarea");
 const sendChatBtn = document.querySelector(".chat-input span");
 
 let userMessage = null; 
-const API_KEY = "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";
+const API_KEY = "817632b1bemsha64466b345e1866p121fb4jsn1122b6fed85b";
 const inputInitHeight = chatInput.scrollHeight;
 
 const createChatLi = (message, className) => {
@@ -18,7 +18,7 @@ const createChatLi = (message, className) => {
 }
 
 const generateResponse = (chatElement) => {
-    const API_URL = "https://api.openai.com/v1/chat/completions";
+    const API_URL = "https://paphus-botlibre.p.rapidapi.com/form-check-instance";
     const messageElement = chatElement.querySelector("p");
 
    

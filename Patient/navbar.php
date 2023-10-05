@@ -1,6 +1,6 @@
 <!-- NabBar -->
 <header>
-        <nav class="navbar navbar-expand-lg navbar-dark bg-dark" style="opacity: 100%;">
+        <nav class="navbar navbar-expand-lg navbar-dark bg-dark fixed-top" style="opacity: 100%;">
             <div class="container-fluid">
                 <a class="navbar-brand" href="./index.php">Health Stream</a>
                 <button class="navbar-toggler" type="button" data-bs-toggle="collapse"

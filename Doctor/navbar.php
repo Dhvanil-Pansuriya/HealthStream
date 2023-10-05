@@ -1,7 +1,7 @@
 
 <!-- NabBar -->
 <header>
-    <nav class="navbar navbar-expand-lg navbar-dark bg-dark fixed-top" style="opacity: 100%;">
+    <nav class="navbar navbar-expand-lg navbar-dark bg-dark sticky-top" style="opacity: 100%;">
         <div class="container-fluid">
             <a class="navbar-brand" href="./index.php">Health Stream</a>
             <button class="navbar-toggler" type="button" data-bs-toggle="collapse"
@@ -32,12 +32,6 @@
                                 <li>
                                     <hr class="dropdown-divider">
                                 </li>
-
-                                <li><a class="dropdown-item" href="#">My Records</a></li>
-                                <li>
-                                    <hr class="dropdown-divider">
-                                </li>
-
                                 <li><a class="dropdown-item" href="#">My Lab Test</a></li>
                                 <li>
                                     <hr class="dropdown-divider">

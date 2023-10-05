@@ -14,7 +14,7 @@ if (!isset($_SESSION['username'])) {
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Code Sharing Platform</title>
+    <title>Patient - HealthStream</title>
     <!-- <link rel="stylesheet" href="./css/navbar.css"> -->
     <!-- <link rel="stylesheet" href="./css/style.css"> -->
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet"
@@ -60,22 +60,22 @@ if (!isset($_SESSION['username'])) {
             <?php
 
             include "../config.php";
-            $sql = " SELECT username, email, phonenumber FROM users WHERE username='{$_SESSION['username']}' ";
+            $sql = " SELECT * FROM users WHERE username='{$_SESSION['username']}' ";
             $result = mysqli_query($conn, $sql);
 
             if (mysqli_num_rows($result) > 0) {
                 while ($row = mysqli_fetch_assoc($result)) {
-                    echo "<section class='container '>
-        <h1><b>Your Information</b></h1>
-        
-        <div class='col-lg-12'>
-        <div class='card-body'>
-        <div class='row'>
-        <div class='col-sm-3'>
-        <p class='mb-0'>Full Name</p>
-        </div>
-        <div class='col-sm-9'>
-        <p class=' mb-0'>" . $row['username'] . "</p>
+                                echo "<section class='container   my-5 p-5  '>
+                    <h1><b>Your Information</b></h1>
+                    
+                    <div class='col-lg-12'>
+                    <div class='card-body'>
+                    <div class='row'>
+                    <div class='col-sm-3'>
+                    <p class='mb-0'>Full Name</p>
+                    </div>
+                    <div class='col-sm-9'>
+                    <p class=' mb-0'>" . $row['username'] . "</p>
                         </div>
                     </div>
                     <hr>
@@ -94,6 +94,15 @@ if (!isset($_SESSION['username'])) {
                         </div>
                         <div class='col-sm-9'>
                             <p class=' mb-0'>" . $row['phonenumber'] . "</p>
+                        </div>
+                    </div> 
+                    <hr>
+                    <div class='row'>
+                    <div class='col-sm-3'>
+                    <p class='mb-0'>Address</p>
+                        </div>
+                        <div class='col-sm-9'>
+                            <p class=' mb-0'>" . $row['address'] . "</p>
                         </div>
                     </div>
 

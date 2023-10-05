@@ -22,22 +22,17 @@
                                     <?php echo " {$_SESSION['username']}" ?>
                                 </a>
                                 <ul class="dropdown-menu  bg-secondary" aria-labelledby="navbarDropdown">
-                                    <li><a class="dropdown-item" href="./Patient/index.php">My Profile</a></li>
+                                    <li><a class="dropdown-item" href="./index.php">My Profile</a></li>
                                     <li>
                                         <hr class="dropdown-divider">
                                     </li>
 
-                                    <li><a class="dropdown-item" href="./Patient/mydoctor.php">My Doctor</a></li>
+                                    <li><a class="dropdown-item" href="./manageDoctor.php">Manage Doctor</a></li>
                                     <li>
                                         <hr class="dropdown-divider">
                                     </li>
 
-                                    <li><a class="dropdown-item" href="#">My Records</a></li>
-                                    <li>
-                                        <hr class="dropdown-divider">
-                                    </li>
-
-                                    <li><a class="dropdown-item" href="#">My Lab Test</a></li>
+                                    <li><a class="dropdown-item" href="./manageAssistant.php">Manage Assistant</a></li>
                                     <li>
                                         <hr class="dropdown-divider">
                                     </li>
