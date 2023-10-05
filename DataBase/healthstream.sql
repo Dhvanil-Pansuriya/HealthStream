@@ -40,7 +40,7 @@ CREATE TABLE `assistant` (
 --
 
 INSERT INTO `assistant` (`name`, `email`, `phonenumber`, `password`, `datetime`) VALUES
-('Raman', 'raman@gmail.com', '8856996585', '12345', '2023-10-05 05:18:05');
+('Raman', 'raman@gmail.com', '258147963', '12345', '2023-10-05 05:18:05');
 
 -- --------------------------------------------------------
 
@@ -64,8 +64,8 @@ CREATE TABLE `doctors` (
 --
 
 INSERT INTO `doctors` (`name`, `email`, `phonenumber`, `specialist`, `experience`, `doctorid`, `description`, `password`) VALUES
-('Harshad Maheta', 'mrharshad@gmail.com', '9985665474', 'Heart', '3 Year\'s of Expirince', '20031', 'Hello,\r\nI am Dr. Harshad Maheta\r\nI am Heart specialist in this hospital with 3 year\'s of experience ', '12345'),
-('Charan Sharma', 'mrcharan@gmail.com', '8874556585', 'Eye', '4 Years of Experience', '27731', 'Hello,\r\nI am Dr. Charan Sharma\r\nI am Eye specialist in this hospital with 3 year\'s of experience ', '12345');
+('Harshad Maheta', 'mrharshad@gmail.com', '741258963', 'Heart', '3 Year\'s of Expirince', '20031', 'Hello,\r\nI am Dr. Harshad Maheta\r\nI am Heart specialist in this hospital with 3 year\'s of experience ', '12345'),
+('Charan Sharma', 'mrcharan@gmail.com', '365897412', 'Eye', '4 Years of Experience', '27731', 'Hello,\r\nI am Dr. Charan Sharma\r\nI am Eye specialist in this hospital with 3 year\'s of experience ', '12345');
 
 -- --------------------------------------------------------
 
@@ -107,9 +107,9 @@ CREATE TABLE `users` (
 --
 
 INSERT INTO `users` (`username`, `email`, `phonenumber`, `registered_date`, `password`, `address`, `allocateddoctor`, `disease`) VALUES
-('RohanBhai', 'rohan@gmail.com', '887455956', '2023-10-05 10:51:09', '12345', 'Baroda, Gujarat', 'Harshad Maheta ', 'Mini Heart Attack '),
-('ManaliBen', 'manali@gmail.com', '9965885474', '2023-10-05 10:51:59', '12345', 'Surat, Gujarat', 'Harshad Maheta ', 'Heart Pain'),
-('ChagganBhai', 'chagan@gmail.com', '998565874', '2023-10-05 10:59:26', '12345', 'Baroda', 'Charan Sharma ', 'Eye Flue');
+('RohanBhai', 'rohan@gmail.com', '123456789', '2023-10-05 10:51:09', '12345', 'Baroda, Gujarat', 'Harshad Maheta ', 'Mini Heart Attack '),
+('ManaliBen', 'manali@gmail.com', '321456987', '2023-10-05 10:51:59', '12345', 'Surat, Gujarat', 'Harshad Maheta ', 'Heart Pain'),
+('ChagganBhai', 'chagan@gmail.com', '987456321', '2023-10-05 10:59:26', '12345', 'Baroda', 'Charan Sharma ', 'Eye Flue');
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
